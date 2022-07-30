@@ -61,7 +61,12 @@ int	play(char grille[6][7])
 		player_to_play = player(count);
 		afficher_grille(grille);
 		place_pion(grille, player_to_play);
+		if (count > 5)
+		{
+			win = game_win(grille, player_to_play);
+		}
 		printf("\e[1;1H\e[2J");
 		count++;
 	}
+	return (0);
 }
