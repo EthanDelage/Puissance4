@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gestion.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edelage <edelage@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/30 16:59:22 by edelage           #+#    #+#             */
+/*   Updated: 2022/07/30 19:01:26 by edelage          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -5,6 +17,25 @@
 #include "input.h"
 #include "affichage.h"
 #include "win.h"
+
+//Initialise la grille avec des vides dans chaque case
+void	initialiser_grille(char grille[6][7])
+{
+	int	row;
+	int	column;
+
+	row = 0;
+	while (row <= 6)
+	{
+		column = 0;
+		while (column <= 7)
+		{
+			grille[row][column] = ' ';
+			column++;
+		}
+		row++;
+	}
+}
 
 int	full_grid(char top_line[])
 {
@@ -34,7 +65,7 @@ int	player(int turn)
 	}
 }
 
-char pion_played(int player_played)
+char	pion_played(int player_played)
 {
 	if (player_played == 1)
 	{
@@ -42,7 +73,7 @@ char pion_played(int player_played)
 	}
 	else
 	{
-		return('O');
+		return ('O');
 	}
 }
 
@@ -57,7 +88,6 @@ int	play(char grille[6][7])
 	initialiser_grille(grille);
 	while (!win && count < 42)
 	{
-		title();
 		player_to_play = player(count);
 		afficher_grille(grille);
 		place_pion(grille, player_to_play);
@@ -68,5 +98,6 @@ int	play(char grille[6][7])
 		printf("\e[1;1H\e[2J");
 		count++;
 	}
+	end_game(grille, player(count - 1), win);
 	return (0);
 }

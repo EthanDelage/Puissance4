@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   win.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edelage <edelage@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/30 16:59:50 by edelage           #+#    #+#             */
+/*   Updated: 2022/07/30 18:18:04 by edelage          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -120,26 +132,21 @@ int	game_win(char grille[6][7], int player_play)
 	if (vertical_win(grille, player_play))
 	{
 		return (1);
-		printf("vertical");
 	}
 	else if (horizontal_win(grille, player_play))
 	{
-		return(1);
-		printf("horiz");
+		return (1);
 	}
 	else if (up_diagonal_win(grille, player_play))
 	{
 		return (1);
-		printf("diag1");
 	}
 	else if (down_diagonal_win(grille, player_play))
 	{
 		return (1);
-		printf("diag2");
 	}
 	else
 	{
-		return(0);
+		return (0);
 	}
 }
-

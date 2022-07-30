@@ -1,21 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   affichage.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edelage <edelage@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/30 17:41:12 by edelage           #+#    #+#             */
+/*   Updated: 2022/07/30 19:05:23 by edelage          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
-
-void	title(void)
-{
-	printf("  ______   ______   ______   ______   ______   ______   ______   ______\n");
-	printf(" /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/\n");
-	printf(" /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/\n\n\n");
-	printf("__________       __                                              _____\n");
-	printf("\\______   \\__ __|__| ______ __________    ____   ____  ____     /  |  |\n");
-	printf(" |     ___|  |  |  |/  ___//  ___\\__  \\  /    \\_/ ____/ __ \\   /   |  |_\n");
-	printf(" |    |   |  |  |  |\\___ \\ \\___ \\ / __ \\|   |  \\  \\__\\  ___/  /    ^   /\n");
-	printf(" |____|   |____/|__/____  /____  (____  |___|  /\\___  \\___  > \\____   |\n");
-	printf("                        \\/     \\/     \\/     \\/     \\/    \\/       |__|\n\n");
-	printf("  ______   ______   ______   ______   ______   ______   ______   ______\n");
-	printf(" /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/\n");
-	printf(" /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/  /_____/\n\n\n");
-}
 
 //Separe deux lignes de pions
 void	separateur(void)
@@ -48,25 +44,6 @@ void	row(char grille[])
 	printf("\n");
 }
 
-//Initialise la grille avec des vides dans chaque case
-void	initialiser_grille(char grille[6][7])
-{
-	int	row;
-	int	column;
-
-	row = 0;
-	while (row <= 6)
-	{
-		column = 0;
-		while (column <= 7)
-		{
-			grille[row][column] = ' ';
-			column++;
-		}
-		row++;
-	}
-}
-
 void	afficher_grille(char grille[6][7])
 {
 	int	count;
@@ -91,3 +68,15 @@ void	afficher_grille(char grille[6][7])
 	printf("  1   2   3   4   5   6   7\n\n");
 }
 
+void	end_game(char grille[6][7], int last_player, int win)
+{
+	afficher_grille(grille);
+	if (win)
+	{
+		printf("Bravo joueur %d, vous avez gagne !\n", last_player);
+	}
+	else
+	{
+		printf("La partie est finit, et personne n'a gagne\n");
+	}
+}
