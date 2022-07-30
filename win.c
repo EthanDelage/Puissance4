@@ -28,3 +28,29 @@ int	vertical_win(char grille[6][7], int player_play)
 	}
 	return (0);
 }
+
+int	horizontal_win(char grille[6][7], int player_play)
+{
+	int	row;
+	int	count;
+	char	pion;
+
+	row = 0;
+	count = 0;
+	pion = pion_played(player_play);
+	while (row < 6)
+	{
+		while (count < 4)
+		{
+			if (pion == grille[row][count] &&
+				pion == grille[row][count + 1] &&
+				pion == grille[row][count + 2] &&
+				pion == grille[row][count + 3])
+			{
+				return (1);
+			}
+		}
+		count = 0;
+	}
+	return (0);
+}
